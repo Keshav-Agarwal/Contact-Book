@@ -1,0 +1,517 @@
+<div *ngIf="contact">
+
+  <div *ngIf="!edit">
+    <div class="col-md-3">
+
+
+
+      <!--
+      <div style="text-align: center;">
+        <div class="card .mx-auto" style="width: 25rem;">
+          <div *ngIf="contact.img_src === ''; then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock><img src="https://www.freeiconspng.com/uploads/contact-icon-20.png" alt="pic" class="card-img-top" /></ng-template>
+          <ng-template #elseBlock><img src="{{contact.img_src}}" alt="pic" class="card-img-top" /></ng-template>
+          <br>
+          <div class="card-body">
+            <div class="card-title">
+              <h2>{{contact.first_name}} {{contact.last_name}} ({{contact.gender | uppercase}}) </h2>
+            </div>
+          </div>
+          <ul class="list-group list-group-flush">
+
+            <li class="list-group-item"><h5><i class="fas fa-briefcase" style="float: left;"></i>
+              {{contact.job_title}} {{contact.organization}}</h5>
+            </li>
+
+            <li class="list-group-item"><h5><i class="fas fa-map-marked-alt" style="float: left;"></i>
+              {{contact.home_address}} {{contact.city}} </h5>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fas fa-phone" style="float: left;"></i>
+              {{contact.phone1}}</h4></li>
+
+            <li class="list-group-item"><h4><i class="fas fa-phone" style="float: left;"></i>
+              {{contact.phone2}} </h4></li>
+
+            <li class="list-group-item"><h4><i class="fas fa-phone" style="float: left;"></i>
+              {{contact.phone3}} </h4></li>
+
+            <li class="list-group-item"><h6><i class="fas fa-at" style="float: left;"></i>
+              {{contact.email}} </h6>
+            </li>
+
+          </ul>
+          <div class="card-body">
+
+          </div>
+        </div>
+      </div>-->
+
+
+
+
+
+      <!---------------start -->
+
+
+
+      <article class="cssui-usercard">
+        <div class="cssui-usercard__body">
+          <header class="cssui-usercard__header">
+
+            <div *ngIf="contact.img_src === ''; then thenImgBlock else elseImgBlock"></div>
+            <ng-template #thenImgBlock><img src="https://www.freeiconspng.com/uploads/contact-icon-20.png" alt="pic" class="cssui-usercard__avatar" /></ng-template>
+            <ng-template #elseImgBlock><img src="{{contact.img_src}}" alt="pic" class="cssui-usercard__avatar" /></ng-template>
+
+
+
+            <div class="cssui-usercard__header-info">
+              <h3 class="cssui-usercard__name">{{contact.first_name}} <span class="cssui-usercard__name-label">{{contact.last_name}}</span></h3>
+              <span class="cssui-usercard__post">{{contact.job_title}}</span>
+            </div>
+
+
+          </header>
+          <div class="cssui-usercard__content">
+
+              <div class="cssui-slider__slides">
+
+                  <h4 class="cssui-usercard__title">Details</h4>
+
+                  <div class="cssui-usercard__stats">
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <i class="cssui-icon icon-earth"></i>
+
+
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Ph Num 1</span>
+                        <div *ngIf="contact.phone1 === ''; then thenPhn1Block else elsePhn1Block"></div>
+                        <ng-template #thenPhn1Block><span class="cssui-stats__value">-</span></ng-template>
+                        <ng-template #elsePhn1Block><span class="cssui-stats__value">{{contact.phone1}}</span></ng-template>
+                      </div>
+
+
+                    </div>
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <i class="cssui-icon icon-location"></i>
+
+
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Ph Num 2</span>
+                        <div *ngIf="contact.phone2 === ''; then elsePhn2Block else thenPhn2Block"></div>
+                        <ng-template #thenPhn2Block><span class="cssui-stats__value">{{contact.phone2}}</span></ng-template>
+                        <ng-template #elsePhn2Block><span class="cssui-stats__value">-</span></ng-template>
+                      </div>
+
+
+                    </div>
+                  </div>
+
+                  <div class="cssui-usercard__stats">
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <i class="cssui-icon icon-calendar"></i>
+
+
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Ph Num 3</span>
+                        <div *ngIf="contact.phone3 === ''; then elsePhn3Block else thenPhn3Block"></div>
+                        <ng-template #thenPhn3Block><span class="cssui-stats__value">{{contact.phone3}}</span></ng-template>
+                        <ng-template #elsePhn3Block><span class="cssui-stats__value">-</span></ng-template>
+                      </div>
+
+
+                    </div>
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <i class="cssui-icon icon-man-woman"></i>
+
+
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Email</span>
+                        <div *ngIf="contact.email === ''; then elseEmailBlock else thenEmailBlock"></div>
+                        <ng-template #thenEmailBlock><span class="cssui-stats__value">{{contact.email}}</span></ng-template>
+                        <ng-template #elseEmailBlock><span class="cssui-stats__value">-</span></ng-template>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+
+                  <div class="cssui-usercard__stats">
+
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <i class="cssui-icon icon-vue"></i>
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Address</span>
+                        <div *ngIf="contact.home_address === '' && contact.city === ''; then thenAdrBlock else elseAdrBlock"></div>
+                        <ng-template #thenAdrBlock><span class="cssui-stats__value">-</span></ng-template>
+                        <ng-template #elseAdrBlock><span class="cssui-stats__value">{{contact.home_address}}  {{contact.city}}</span></ng-template>
+                      </div>
+                    </div>
+
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <i class="cssui-icon icon-js"></i>
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Company</span>
+                        <div *ngIf="contact.organization === ''; then thenOrgBlock else elseOrgBlock"></div>
+                        <ng-template #thenOrgBlock><span class="cssui-stats__value">{{contact.organization}}</span></ng-template>
+                        <ng-template #elseOrgBlock><span class="cssui-stats__value">-</span></ng-template>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+
+          </div>
+        </div>
+        <footer class="cssui-usercard__footer">
+          <button class="cssui-usercard__social" (click)="deleteContact()">
+            <h5>Delete</h5>
+          </button>
+          <button class="cssui-usercard__social" (click)="editContact()">
+            <h5>Edit</h5>
+          </button>
+        </footer>
+
+
+      </article>
+
+
+
+
+
+
+
+
+
+      <!--------end-->
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+  <div *ngIf="edit">
+
+    <!--<h2>Edit Contact</h2>
+    <br>
+    <form [formGroup]="myForm" (ngSubmit)="updateContact(myForm)">
+      <div class="row">
+        <div class="col">
+          <label for="first_name">First name</label>
+        </div>
+        <div class="col">
+          <input formControlName="first_name" placeholder="First name" id="first_name">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="last_name">Last Name</label>
+        </div>
+        <div class="col">
+          <input formControlName="last_name" placeholder="Last Name" id="last_name">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="job_title">Job Title</label>
+        </div>
+        <div class="col">
+          <input formControlName="job_title" placeholder="Job Title" id="job_title">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="phone1">Phone Number 1</label>
+        </div>
+        <div class="col">
+          <input formControlName="phone1" placeholder="Phone Number 1" id="phone1">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="phone2">Phone Number 2</label>
+        </div>
+        <div class="col">
+          <input formControlName="phone2" placeholder="Phone Number 2" id="phone2">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="phone3">Phone Number 3</label>
+        </div>
+        <div class="col">
+          <input formControlName="phone3" placeholder="Phone Number 3" id="phone3">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="gender">Gender</label>
+        </div>
+        <div class="col">
+          <input formControlName="gender" placeholder="Gender" id="gender">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="email">E-mail</label>
+        </div>
+        <div class="col">
+          <input formControlName="email" placeholder="E-mail" id="email">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="home_address">Home Address</label>
+        </div>
+        <div class="col">
+          <input formControlName="home_address" placeholder="Home Address" id="home_address">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="city">City</label>
+        </div>
+        <div class="col">
+          <input formControlName="city" placeholder="City" id="city">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="img_src">Img URL</label>
+        </div>
+        <div class="col">
+          <input formControlName="img_src" placeholder="Img URL" id="img_src">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="organization">Organization</label>
+        </div>
+        <div class="col">
+          <input formControlName="organization" placeholder="Organization" id="organization">
+          <br>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>-->
+
+
+
+
+    <form [formGroup]="myForm" (ngSubmit)="updateContact(myForm)">
+
+      <article class="cssui-usercard">
+        <div class="cssui-usercard__body">
+
+          <header class="cssui-usercard__header">
+
+
+
+
+
+            <div class="cssui-usercard__header-info">
+              <h3>Update Contact</h3>
+            </div>
+
+
+          </header>
+          <!--<h3>Add New Contact</h3>-->
+
+          <div class="cssui-usercard__content">
+
+            <div class="row">
+              <div class="col">
+                <label for="first_name" class="cssui-stats__name cssui-usercard__stats-name">First name</label>
+              </div>
+              <div class="col">
+                <input formControlName="first_name" placeholder="First name (required)" id="first_name"><br>
+                <div *ngIf="(myForm.controls.first_name.dirty || myForm.controls.first_name.touched) && myForm.controls.first_name.errors" class="alert alert-danger">
+                  First Name is required. <br>
+                  Max length 30 characters. <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="last_name" class="cssui-stats__name cssui-usercard__stats-name">Last Name</label>
+              </div>
+              <div class="col">
+                <input formControlName="last_name" placeholder="Last Name" id="last_name"><br>
+                <div *ngIf="(myForm.controls.last_name.dirty || myForm.controls.last_name.touched) && myForm.controls.last_name.errors" class="alert alert-danger">
+                  Max length 30 characters.<br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="job_title" class="cssui-stats__name cssui-usercard__stats-name">Job Title</label>
+              </div>
+              <div class="col">
+                <input formControlName="job_title" placeholder="Job Title" id="job_title"><br>
+                <div *ngIf="(myForm.controls.job_title.dirty || myForm.controls.job_title.touched) && myForm.controls.job_title.errors" class="alert alert-danger">
+                  Max length 20 characters. <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="phone1" class="cssui-stats__name cssui-usercard__stats-name">Phone Number 1</label>
+              </div>
+              <div class="col">
+                <input formControlName="phone1" placeholder="Phone Number 1 (required)" id="phone1"><br>
+                <div *ngIf="(myForm.controls.phone1.dirty || myForm.controls.phone1.touched) && myForm.controls.phone1.errors" class="alert alert-danger">
+                  Phone number 1 is required. All digits, no other characters. Length 9-15.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="phone2" class="cssui-stats__name cssui-usercard__stats-name">Phone Number 2</label>
+              </div>
+              <div class="col">
+                <input formControlName="phone2" placeholder="Phone Number 2" id="phone2"><br>
+                <div *ngIf="(myForm.controls.phone2.dirty || myForm.controls.phone2.touched) && myForm.controls.phone2.errors" class="alert alert-danger">
+                  All digits, no other characters. Length 9-15.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="phone3" class="cssui-stats__name cssui-usercard__stats-name">Phone Number 3</label>
+              </div>
+              <div class="col">
+                <input formControlName="phone3" placeholder="Phone Number 3" id="phone3"><br>
+                <div *ngIf="(myForm.controls.phone3.dirty || myForm.controls.phone3.touched) && myForm.controls.phone3.errors" class="alert alert-danger">
+                  All digits, no other characters. Length 9-15.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="gender" class="cssui-stats__name cssui-usercard__stats-name">Gender</label>
+              </div>
+              <div class="col">
+                <input formControlName="gender" placeholder="Gender" id="gender"><br>
+                <div *ngIf="(myForm.controls.gender.dirty || myForm.controls.gender.touched) && myForm.controls.gender.errors" class="alert alert-danger">
+                  only 1 character : M/m for male, F/f for female, o/O for Other allowed. No other character. <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="email" class="cssui-stats__name cssui-usercard__stats-name">E-mail</label>
+              </div>
+              <div class="col">
+                <input formControlName="email" placeholder="E-mail" id="email"><br>
+                <div *ngIf="(myForm.controls.email.dirty || myForm.controls.email.touched) && myForm.controls.email.errors" class="alert alert-danger">
+                  Invalid Email id. <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="home_address" class="cssui-stats__name cssui-usercard__stats-name">Home Address</label>
+              </div>
+              <div class="col">
+                <input formControlName="home_address" placeholder="Home Address" id="home_address"><br>
+                <div *ngIf="(myForm.controls.home_address.dirty || myForm.controls.home_address.touched) && myForm.controls.home_address.errors" class="alert alert-danger">
+                  Enter less than 200 characters. <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="city" class="cssui-stats__name cssui-usercard__stats-name">City</label>
+              </div>
+              <div class="col">
+                <input formControlName="city" placeholder="City" id="city"><br>
+                <div *ngIf="(myForm.controls.city.dirty || myForm.controls.city.touched) && myForm.controls.city.errors" class="alert alert-danger">
+                  Enter less than 25 characters. <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="img_src" class="cssui-stats__name cssui-usercard__stats-name">Img URL</label>
+              </div>
+              <div class="col">
+                <input formControlName="img_src" placeholder="Img URL" id="img_src"><br>
+                <div *ngIf="(myForm.controls.img_src.dirty || myForm.controls.img_src.touched) && myForm.controls.img_src.errors" class="alert alert-danger">
+                  Enter less than 200 characters. <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="organization" class="cssui-stats__name cssui-usercard__stats-name">Organization</label>
+              </div>
+              <div class="col">
+                <input formControlName="organization" placeholder="Organization" id="organization"><br>
+                <div *ngIf="(myForm.controls.organization.dirty || myForm.controls.organization.touched) && myForm.controls.organization.errors" class="alert alert-danger">
+                  Enter less than 15 characters. <br>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <footer class="cssui-usercard__footer">
+          <div *ngIf="myForm.invalid && submitted"><b>Form invalid, please enter proper details.</b></div>
+          <span class="cssui-usercard__title"><button class="btn md ghost" type="submit">Submit</button></span>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </article>
+
+    </form>
+
+
+  </div>
+
+
+
+
+
+
+
+
+</div>

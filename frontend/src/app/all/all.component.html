@@ -1,0 +1,279 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <!-- Left Side - All Contacts, Search -->
+    <br>
+
+    <div class="col">
+      <br>
+
+      <div class="row leftsideheading" style="margin-left: 3rem;">
+        <div class="col">
+        <span *ngIf="isSearch">Search Results</span>
+        <span *ngIf="!isSearch">All Contacts</span>
+        </div>
+        <div class="col">
+        <button (click)="viewAdd()" class="centre btn btn-success">Add New</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <br>
+
+        <ul>
+          <li *ngFor="let contact of contacts  | paginate: { itemsPerPage: 20, currentPage: page }" [class.selected]="contact === selectedContact" (click)="onSelect(contact)" class="list-group-item list-group-item-action itemlist">
+            <span class="badge"></span> {{contact.first_name}} {{contact.last_name}}
+          </li>
+        </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+      </div>
+      <div class="row leftsideheading">
+        <div class="col">
+          <br><br>
+        <div *ngIf="isSearch">
+          <button (click)="viewAll()" class="itemlist btn1">View All Contacts</button>
+        </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Side - Details, Edit Contact, Add new -->
+
+    <div class="col">
+
+      <br>
+
+      <div class="row">
+        <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit(searchForm)" style="margin-left: 1rem">
+          <input formControlName="search_val" placeholder="Search" id="search_val">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+
+
+      <div class="row">
+
+        <div *ngIf="!selectedContact">
+          <article class="cssui-usercard" style="margin-left: 1rem">
+
+
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+
+
+              <div class="cssui-usercard__body">
+
+                <header class="cssui-usercard__header">
+
+                  <div class="cssui-usercard__header-info">
+                    <h3>Add new contact</h3>
+                  </div>
+
+                </header>
+                <!--<h3>Add New Contact</h3>-->
+
+                <div class="cssui-usercard__content">
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="first_name" class="cssui-stats__name cssui-usercard__stats-name">First name</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="first_name" placeholder="First name (required)" id="first_name">
+                      <br>
+                      <div *ngIf="(myForm.controls.first_name.dirty || myForm.controls.first_name.touched) && myForm.controls.first_name.errors" class="alert alert-danger">
+                        First Name is required.
+                        <br> Max length 30 characters.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="last_name" class="cssui-stats__name cssui-usercard__stats-name">Last Name</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="last_name" placeholder="Last Name" id="last_name">
+                      <br>
+                      <div *ngIf="(myForm.controls.last_name.dirty || myForm.controls.last_name.touched) && myForm.controls.last_name.errors" class="alert alert-danger">
+                        Max length 30 characters.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="job_title" class="cssui-stats__name cssui-usercard__stats-name">Job Title</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="job_title" placeholder="Job Title" id="job_title">
+                      <br>
+                      <div *ngIf="(myForm.controls.job_title.dirty || myForm.controls.job_title.touched) && myForm.controls.job_title.errors" class="alert alert-danger">
+                        Max length 20 characters.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="phone1" class="cssui-stats__name cssui-usercard__stats-name">Phone Number 1</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="phone1" placeholder="Phone Number 1 (required)" id="phone1">
+                      <br>
+                      <div *ngIf="(myForm.controls.phone1.dirty || myForm.controls.phone1.touched) && myForm.controls.phone1.errors" class="alert alert-danger">
+                        Phone number 1 is required. All digits, no other characters. Length 9-15.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="phone2" class="cssui-stats__name cssui-usercard__stats-name">Phone Number 2</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="phone2" placeholder="Phone Number 2" id="phone2">
+                      <br>
+                      <div *ngIf="(myForm.controls.phone2.dirty || myForm.controls.phone2.touched) && myForm.controls.phone2.errors" class="alert alert-danger">
+                        All digits, no other characters. Length 9-15.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="phone3" class="cssui-stats__name cssui-usercard__stats-name">Phone Number 3</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="phone3" placeholder="Phone Number 3" id="phone3">
+                      <br>
+                      <div *ngIf="(myForm.controls.phone3.dirty || myForm.controls.phone3.touched) && myForm.controls.phone3.errors" class="alert alert-danger">
+                        All digits, no other characters. Length 9-15.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="gender" class="cssui-stats__name cssui-usercard__stats-name">Gender</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="gender" placeholder="Gender" id="gender">
+                      <br>
+                      <div *ngIf="(myForm.controls.gender.dirty || myForm.controls.gender.touched) && myForm.controls.gender.errors" class="alert alert-danger">
+                        only 1 character : M/m for male, F/f for female, o/O for Other allowed. No other character.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="email" class="cssui-stats__name cssui-usercard__stats-name">E-mail</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="email" placeholder="E-mail" id="email">
+                      <br>
+                      <div *ngIf="(myForm.controls.email.dirty || myForm.controls.email.touched) && myForm.controls.email.errors" class="alert alert-danger">
+                        Invalid Email id.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="home_address" class="cssui-stats__name cssui-usercard__stats-name">Home Address</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="home_address" placeholder="Home Address" id="home_address">
+                      <br>
+                      <div *ngIf="(myForm.controls.home_address.dirty || myForm.controls.home_address.touched) && myForm.controls.home_address.errors" class="alert alert-danger">
+                        Enter less than 200 characters.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="city" class="cssui-stats__name cssui-usercard__stats-name">City</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="city" placeholder="City" id="city">
+                      <br>
+                      <div *ngIf="(myForm.controls.city.dirty || myForm.controls.city.touched) && myForm.controls.city.errors" class="alert alert-danger">
+                        Enter less than 25 characters.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="img_src" class="cssui-stats__name cssui-usercard__stats-name">Img URL</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="img_src" placeholder="Img URL" id="img_src">
+                      <br>
+                      <div *ngIf="(myForm.controls.img_src.dirty || myForm.controls.img_src.touched) && myForm.controls.img_src.errors" class="alert alert-danger">
+                        Enter less than 200 characters.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="organization" class="cssui-stats__name cssui-usercard__stats-name">Organization</label>
+                    </div>
+                    <div class="col">
+                      <input formControlName="organization" placeholder="Organization" id="organization">
+                      <br>
+                      <div *ngIf="(myForm.controls.organization.dirty || myForm.controls.organization.touched) && myForm.controls.organization.errors" class="alert alert-danger">
+                        Enter less than 15 characters.
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+              <footer class="cssui-usercard__footer">
+                <div *ngIf="myForm.invalid && submitted"><b>Form invalid, please enter proper details.</b></div>
+                <span><button class="btn1 md ghost" type="submit" style="font-size: 1.5rem;">Submit</button></span>
+              </footer>
+
+
+          </form>
+          </article>
+
+
+        </div>
+
+        <div *ngIf="selectedContact">
+          <app-detail [contact]="selectedContact" (getId)="getId($event)" (updateId)="updateId($event)">
+          </app-detail>
+          <br>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
